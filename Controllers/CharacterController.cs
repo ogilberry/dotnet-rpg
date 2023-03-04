@@ -8,11 +8,19 @@ namespace dotnet_rpg.Controllers;
 public class CharacterController : ControllerBase
 {
     
-    private static Character dummy = new Character();
+    private static List<Character> characters = new List<Character>(){
+        new Character(),
+        new Character {Name = "Greg"}
+    };
+
+    [HttpGet("GetAll")]
+    public ActionResult<List<Character>> Get() {
+        return Ok(characters);
+    }
 
     [HttpGet]
-    public ActionResult<Character> Get() {
-        return Ok(dummy);
+    public ActionResult<Character> GetSingle() {
+        return Ok(characters[0]);
     }
 
 }
