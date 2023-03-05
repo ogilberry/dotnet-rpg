@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using dotnet_rpg.Data;
 
@@ -11,9 +12,11 @@ using dotnet_rpg.Data;
 namespace dotnet_rpg.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230305113854_Skills")]
+    partial class Skills
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,9 +81,6 @@ namespace dotnet_rpg.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Damage")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -88,26 +88,6 @@ namespace dotnet_rpg.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Skills");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("db470773-728e-4b9b-bcd6-5f8ec599848a"),
-                            Damage = 5,
-                            Name = "Devastating Rhyme"
-                        },
-                        new
-                        {
-                            Id = new Guid("5a6ba188-ef6a-4371-ac6f-07bd28cddb0e"),
-                            Damage = 20,
-                            Name = "Super Serious Punch"
-                        },
-                        new
-                        {
-                            Id = new Guid("7304111b-e77e-4371-8235-ce851b54a057"),
-                            Damage = 10,
-                            Name = "Force Lightning"
-                        });
                 });
 
             modelBuilder.Entity("dotnet_rpg.Models.User", b =>
