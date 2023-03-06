@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using dotnet_rpg.Data;
 
@@ -11,9 +12,11 @@ using dotnet_rpg.Data;
 namespace dotnet_rpg.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230305222006_FightStats")]
+    partial class FightStats
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,13 +49,7 @@ namespace dotnet_rpg.Migrations
                     b.Property<int>("Class")
                         .HasColumnType("int");
 
-                    b.Property<int>("Defeats")
-                        .HasColumnType("int");
-
                     b.Property<int>("Defense")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Fights")
                         .HasColumnType("int");
 
                     b.Property<int>("HitPoints")
@@ -70,9 +67,6 @@ namespace dotnet_rpg.Migrations
 
                     b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Victories")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -101,19 +95,19 @@ namespace dotnet_rpg.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("9f652c01-cb87-4f10-8d3e-5fe7b4f36bea"),
+                            Id = new Guid("7a11e32c-7562-4527-a50d-5ab2e31a0b3b"),
                             Damage = 5,
                             Name = "Devastating Rhyme"
                         },
                         new
                         {
-                            Id = new Guid("554869fd-0f30-47dc-be7a-4000dc2380ff"),
+                            Id = new Guid("b8ecb61b-75da-4fe4-a969-e8259721f9ea"),
                             Damage = 20,
                             Name = "Super Serious Punch"
                         },
                         new
                         {
-                            Id = new Guid("916aab37-e8c3-4182-ac6c-1cc0f820bed1"),
+                            Id = new Guid("ef195dcd-fbff-409d-9945-d864e618a4e4"),
                             Damage = 10,
                             Name = "Force Lightning"
                         });
